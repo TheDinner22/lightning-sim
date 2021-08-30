@@ -17,7 +17,9 @@ class Window:
         self.HEIGHT = 600
 
         # colors
-        self.COLORS = {}
+        self.COLORS = {
+            "WHITE" : (230, 230, 230)
+        }
 
     def create_window(self):
         # define window
@@ -30,6 +32,11 @@ class Window:
         logo = pygame.image.load("images/logo.png")
         pygame.display.set_icon(logo)
 
+    def draw_window(self):
+        self.WIN.fill(self.COLORS["WHITE"])
+
+        pygame.display.update()
+
     def main(self):
         # create window
         self.create_window()
@@ -39,6 +46,8 @@ class Window:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+            
+            self.draw_window()
 
 if __name__ == "__main__":
     win = Window()
