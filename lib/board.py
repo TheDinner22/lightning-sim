@@ -106,7 +106,7 @@ class Board:
 
     def BFS(self):
         """breadth first search to find the quickest way to the bottom"""
-        start_i = self.width // 2
+        start_i = random.randrange(0,self.width)
         paths = [ [start_i] ]
         solved = False
         dead_ends = []
@@ -114,7 +114,7 @@ class Board:
         while not solved:
             for path in paths:
                 # find all possibles moves from path
-                if len(dead_ends) >= len(paths) or len(paths) > 100000: # TODO this solution sucks
+                if len(dead_ends) >= len(paths) or len(paths) > 10000: # TODO this solution sucks
                     return False, False
 
                 # NOTE order is left right up down
@@ -174,7 +174,7 @@ class Board:
 
 
 if __name__ == "__main__":
-    b = Board()
+    b = Board(10)
 
     paths, index = b.BFS()
 
